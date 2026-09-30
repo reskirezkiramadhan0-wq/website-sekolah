@@ -1,0 +1,916 @@
+/* =========================================================
+   SMK YPC CINTAWA - SCHOOL ADMIN DASHBOARD
+   FINAL CSS
+   ========================================================= */
+
+:root {
+    --sidebar-width: 255px;
+
+    --blue-dark: #063b91;
+    --blue-main: #0756c9;
+    --blue-light: #1673e8;
+    --blue-active: #0867df;
+
+    --white: #ffffff;
+    --bg: #f5f8fc;
+    --text: #10213f;
+    --text-muted: #8da0bd;
+
+    --border: #e5ebf3;
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar-wrapper {
+    width: var(--sidebar-width);
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1030;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0a4aa8 0%,
+            #06439b 45%,
+            #063b91 100%
+        );
+
+    color: white;
+
+    overflow: hidden;
+
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+/* =========================================================
+   SIDEBAR BRAND
+   ========================================================= */
+
+.sidebar-brand {
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 12px;
+
+    margin-bottom: 20px;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.3px;
+}
+
+.sidebar-brand i {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.12);
+
+    font-size: 20px;
+}
+
+.sidebar-brand span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   SIDEBAR MENU
+   ========================================================= */
+
+.sidebar-wrapper .flex-grow-1 {
+    overflow-y: auto !important;
+    overflow-x: hidden;
+
+    padding-top: 4px;
+}
+
+.sidebar-menu-section {
+    margin-bottom: 12px;
+}
+
+.sidebar-menu-title {
+    padding: 14px 12px 9px;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.sidebar-menu-list {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu-item {
+    list-style: none;
+
+    margin-bottom: 5px;
+}
+
+/* =========================================================
+   SIDEBAR LINK
+   ========================================================= */
+
+.sidebar-menu-link {
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 13px;
+
+    border-radius: 10px;
+
+    color: rgba(255,255,255,0.82);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.sidebar-menu-link i {
+    width: 20px;
+
+    min-width: 20px;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    color: #d9e9ff;
+}
+
+.sidebar-menu-link:hover {
+    color: white;
+
+    background: rgba(255,255,255,0.09);
+}
+
+.sidebar-menu-link:hover i {
+    color: white;
+}
+
+.sidebar-menu-link.active {
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0872e8,
+            #1264d0
+        );
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.08);
+}
+
+.sidebar-menu-link.active i {
+    color: white;
+}
+
+/* =========================================================
+   SIDEBAR PROFILE
+   ========================================================= */
+
+.sidebar-profile {
+    flex-shrink: 0;
+
+    min-height: 68px;
+
+    margin-top: auto;
+
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    border: 1px solid rgba(255,255,255,0.16);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.035);
+}
+
+.sidebar-profile-img {
+    width: 42px !important;
+    height: 42px !important;
+
+    min-width: 42px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.sidebar-profile-info {
+    min-width: 0;
+
+    overflow: hidden;
+}
+
+.sidebar-profile-name {
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.sidebar-profile-email {
+    margin-top: 3px;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+/* =========================================================
+   MAIN WRAPPER
+   ========================================================= */
+
+.main-wrapper {
+    min-height: 100vh;
+
+    margin-left: var(--sidebar-width);
+
+    padding: 0 40px 40px;
+
+    background: var(--bg);
+
+    display: flex;
+    flex-direction: column;
+
+    transition: margin-left 0.25s ease;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar-custom {
+    width: calc(100% + 80px);
+
+    height: 70px;
+    min-height: 70px;
+
+    margin-left: -40px;
+    margin-right: -40px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: center;
+
+    padding: 0 30px;
+
+    background: rgba(255,255,255,0.97);
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: none;
+}
+
+/* =========================================================
+   NAVBAR LEFT
+   ========================================================= */
+
+.navbar-left {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 100px;
+}
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.btn-desktop-toggle,
+.sidebar-toggle-btn {
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e1e8f1;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: var(--blue-main);
+
+    font-size: 14px;
+}
+
+.sidebar-toggle-btn {
+    display: none;
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.navbar-search-wrapper {
+    width: 440px;
+
+    height: 42px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #e4eaf2;
+
+    border-radius: 22px;
+
+    background: #fff;
+
+    justify-self: center;
+}
+
+.navbar-search-input {
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    padding: 0 45px 0 16px;
+
+    background: transparent;
+
+    color: #34445d;
+
+    font-size: 13px;
+}
+
+.navbar-search-input::placeholder {
+    color: #8b99aa;
+}
+
+.navbar-search-btn {
+    width: 40px;
+    height: 40px;
+
+    position: absolute;
+
+    right: 1px;
+    top: 1px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #5f718b;
+
+    font-size: 15px;
+}
+
+/* =========================================================
+   NAVBAR RIGHT
+   ========================================================= */
+
+.navbar-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    justify-self: end;
+
+    height: 100%;
+}
+
+/* =========================================================
+   NAVBAR ACTION BUTTON
+   ========================================================= */
+
+.navbar-action-btn {
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #175dc1;
+
+    font-size: 16px;
+}
+
+.navbar-action-btn:hover {
+    background: #f2f6fb;
+}
+
+/* =========================================================
+   NOTIFICATION BADGE
+   ========================================================= */
+
+.navbar-action-badge {
+    width: 6px;
+    height: 6px;
+
+    position: absolute;
+
+    top: 5px;
+    right: 5px;
+
+    border-radius: 50%;
+
+    background: #1673e8;
+
+    border: 1px solid white;
+}
+
+/* =========================================================
+   ADMIN PROFILE NAVBAR
+   ========================================================= */
+
+.navbar-profile-btn {
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 3px 7px 3px 4px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #24324a;
+
+    border-radius: 8px;
+
+    white-space: nowrap;
+}
+
+.navbar-profile-btn:hover {
+    background: #f4f7fb;
+}
+
+/* =========================================================
+   ADMIN IMAGE
+   ========================================================= */
+
+.navbar-profile-img {
+    width: 32px !important;
+    height: 32px !important;
+
+    min-width: 32px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+/* =========================================================
+   ADMIN NAME
+   ========================================================= */
+
+.navbar-profile-name {
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   ADMIN ARROW
+   ========================================================= */
+
+.navbar-profile-caret {
+    color: #8b9ab0;
+
+    font-size: 10px !important;
+
+    margin-left: 2px;
+
+    line-height: 1;
+}
+
+/* Matikan arrow bawaan Bootstrap */
+.navbar-profile-btn::after {
+    display: none !important;
+}
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+    min-height: 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 20px 0;
+
+    background: var(--bg);
+}
+
+.page-title {
+    margin: 0;
+
+    color: #0e2040;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 7px 0 0;
+
+    color: #8796ab;
+
+    font-size: 15px;
+}
+
+/* =========================================================
+   DASHBOARD CONTENT
+   GRAFIK TETAP ADA
+   ========================================================= */
+
+.main-wrapper > .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.card {
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    background: white;
+
+    box-shadow:
+        0 2px 10px rgba(15,42,75,0.025);
+}
+
+.card-title {
+    font-size: 18px;
+}
+
+.stat-value {
+    font-size: 30px;
+}
+
+/* =========================================================
+   REMOVE QUICK ACTION
+   ========================================================= */
+
+.btn-quick-action {
+    display: none !important;
+}
+
+.btn-date-picker {
+    display: none !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    :root {
+        --sidebar-width: 240px;
+    }
+
+    .main-wrapper {
+        margin-left: var(--sidebar-width);
+
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .navbar-custom {
+        width: calc(100% + 60px);
+
+        margin-left: -30px;
+        margin-right: -30px;
+
+        padding: 0 25px;
+    }
+
+    .navbar-search-wrapper {
+        width: 380px;
+    }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+    :root {
+        --sidebar-width: 0px;
+    }
+
+    .sidebar-wrapper {
+        width: 255px;
+
+        transform: translateX(-100%);
+
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar-wrapper.show {
+        transform: translateX(0);
+    }
+
+    .main-wrapper {
+        margin-left: 0;
+
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .navbar-custom {
+        width: calc(100% + 50px);
+
+        margin-left: -25px;
+        margin-right: -25px;
+
+        padding: 0 20px;
+    }
+
+    .btn-desktop-toggle {
+        display: none !important;
+    }
+
+    .sidebar-toggle-btn {
+        display: flex;
+    }
+
+    .navbar-search-wrapper {
+        width: 320px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .navbar-custom {
+        height: 64px;
+
+        min-height: 64px;
+
+        grid-template-columns: auto 1fr auto;
+
+        padding: 0 15px;
+    }
+
+    .navbar-search-wrapper {
+        width: 220px;
+
+        height: 38px;
+    }
+
+    .navbar-actions {
+        gap: 2px;
+    }
+
+    .navbar-action-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .navbar-profile-name {
+        display: none !important;
+    }
+
+    .navbar-profile-caret {
+        display: none;
+    }
+
+    .navbar-profile-img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .page-header {
+        min-height: 75px;
+
+        padding: 15px 0;
+    }
+
+    .page-title {
+        font-size: 22px;
+    }
+
+    .page-subtitle {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .main-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .navbar-custom {
+        width: calc(100% + 30px);
+
+        margin-left: -15px;
+        margin-right: -15px;
+
+        padding: 0 12px;
+    }
+
+    .navbar-search-wrapper {
+        display: none;
+    }
+
+    .navbar-actions {
+        gap: 2px;
+    }
+
+    .navbar-action-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
