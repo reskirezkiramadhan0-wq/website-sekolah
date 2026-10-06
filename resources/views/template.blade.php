@@ -97,7 +97,7 @@
 
 
             <!-- COMPONENTS -->
-            <div class="sidebar-menu-section">
+          
 
                 <div class="sidebar-menu-title">
                     Components
@@ -109,7 +109,7 @@
                     <!-- DATA GURU -->
                     <li class="sidebar-menu-item">
 
-                        <a href="#"
+                        <a href="{{ route('admin.guru.index') }}"
                            class="sidebar-menu-link"
                            id="menu-guru"
                            title="Data Guru">
@@ -118,6 +118,24 @@
 
                             <span>
                                 Data Guru
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                       <li class="sidebar-menu-item">
+
+                        <a href="{{ route('admin.siswa.index') }}"
+                           class="sidebar-menu-link"
+                           id="menu-siswa"
+                           title="Data Siswa">
+
+                            <i class="bi bi-person-vcard-fill"></i>
+
+                            <span>
+                                Data Siswa
                             </span>
 
                         </a>
@@ -147,7 +165,7 @@
                     <!-- BERITA -->
                     <li class="sidebar-menu-item">
 
-                        <a href="#"
+                        <a href="{{route('admin.berita.index')}}"
                            class="sidebar-menu-link"
                            id="menu-berita"
                            title="Berita">
@@ -166,7 +184,7 @@
                     <!-- EKSTRAKURIKULER -->
                     <li class="sidebar-menu-item">
 
-                        <a href="#"
+                        <a href="{{route('admin.ekstrakurikuler.index')}}"
                            class="sidebar-menu-link"
                            id="menu-ekstrakurikuler"
                            title="Ekstrakurikuler">
@@ -185,7 +203,7 @@
                     <!-- GALERI -->
                     <li class="sidebar-menu-item">
 
-                        <a href="#"
+                        <a href="{{route('admin.galeri.index')}}"
                            class="sidebar-menu-link"
                            id="menu-galeri"
                            title="Galeri">
@@ -204,7 +222,7 @@
                     <!-- PROFILE SEKOLAH -->
                     <li class="sidebar-menu-item">
 
-                        <a href="#"
+                        <a href="{{ route('admin.profile.index') }}"
                            class="sidebar-menu-link"
                            id="menu-profile-sekolah"
                            title="Profile Sekolah">
@@ -219,19 +237,16 @@
 
                     </li>
 
-                    <li class="sidebar-menu-item">
-                        <a href="#"
-                            class="sidebar-menu-link text-denger"
-                            id="menu-logout">
+                    <li class="sidebar-menu-link"> 
+                        <form action="{{ route('admin.logout') }}" method="POST">
+                            @csrf
+                            <button class="sidebar-menu-link logout-button" title="Logout">
+                                <i class="bi bi-box-arrow-right"></i>
+                            <span>Logout</span>
 
-                            <i class="bi bi-box-arrow-right"></i>
-
-                            <span>
-                                Logout
-                            </span>
-                        </a>
+                            </button>
+                        </form>
                     </li>
-
                 </ul>
 
             </div>
