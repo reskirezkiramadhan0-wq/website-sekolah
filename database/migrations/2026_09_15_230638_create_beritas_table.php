@@ -12,11 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('beritas', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul' ,50);
+            $table->uuid('id_berita')->primary();
+            $table->string('judul', 50);
             $table->text('isi');
             $table->date('tanggal');
-            $table->string('gambar' ,100);
+            $table->string('gambar', 100);
+
+            // Relasi ke tabel users standar (id/user_id)
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('restrict');
+                  
             $table->timestamps();
         });
     }

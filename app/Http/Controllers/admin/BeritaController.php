@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
     //
-    public function index()
+     public function index()
     {
         $beritas = Berita::latest()->get();
 
@@ -37,10 +38,14 @@ class BeritaController extends Controller
             'tanggal',
         ]);
 
+        // Simpan gambar jika diunggah
         if ($request->hasFile('gambar')) {
             $data['gambar'] = $request->file('gambar')
                 ->store('berita', 'public');
         }
+
+        // Ambil ID pengguna yang sedang login
+        $data['user_id'] = Auth::id();
 
         Berita::create($data);
 
@@ -69,8 +74,8 @@ class BeritaController extends Controller
             'tanggal',
         ]);
 
+        // Ganti gambar jika ada gambar baru
         if ($request->hasFile('gambar')) {
-
             if ($berita->gambar) {
                 Storage::disk('public')->delete($berita->gambar);
             }
@@ -86,13 +91,13 @@ class BeritaController extends Controller
             ->with('success', 'Berita berhasil diperbarui.');
     }
 
-    public function destroy(Berita $berita)
+    public function destroy(Berita $beritum)
     {
-        if ($berita->gambar) {
-            Storage::disk('public')->delete($berita->gambar);
+        if ($beritum->gambar) {
+            Storage::disk('public')->delete($beritum->gambar);
         }
 
-        $berita->delete();
+        $beritum->delete();
 
         return redirect()
             ->route('admin.berita.index')

@@ -1,4 +1,3 @@
-
 @extends('template')
 
 @section('content')
@@ -48,12 +47,35 @@
 
                 <div class="mb-3">
                     <label class="form-label">
-                        Deskripsi
+                        Kategori
                     </label>
 
-                    <textarea name="deskripsi"
+                    <select name="kategori" class="form-control" required>
+                        <option value="foto" {{ old('kategori', $galeri->kategori) == 'foto' ? 'selected' : '' }}>Foto</option>
+                        <option value="video" {{ old('kategori', $galeri->kategori) == 'video' ? 'selected' : '' }}>Video</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Keterangan
+                    </label>
+
+                    <textarea name="keterangan"
                               rows="4"
-                              class="form-control">{{ old('deskripsi', $galeri->deskripsi) }}</textarea>
+                              class="form-control" required>{{ old('keterangan', $galeri->keterangan) }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Tanggal
+                    </label>
+
+                    <input type="date"
+                           name="tanggal"
+                           class="form-control"
+                           value="{{ old('tanggal', $galeri->tanggal) }}"
+                           required>
                 </div>
 
                 <div class="mb-3">
@@ -62,11 +84,15 @@
                     </label>
 
                     <div class="mt-2">
-                        <img src="{{ asset('storage/' . $galeri->foto) }}"
-                             width="200"
-                             height="130"
-                             class="rounded"
-                             style="object-fit: cover;">
+                        @if($galeri->file)
+                            <img src="{{ asset('storage/' . $galeri->file) }}"
+                                 width="200"
+                                 height="130"
+                                 class="rounded"
+                                 style="object-fit: cover;">
+                        @else
+                            <p class="text-muted">Tidak ada foto.</p>
+                        @endif
                     </div>
                 </div>
 

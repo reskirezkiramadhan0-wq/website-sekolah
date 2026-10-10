@@ -61,7 +61,7 @@ class GuruController extends Controller
             'nip' => 'required',
             'nama_guru' => 'required',
             'jenis_kelamin' => 'required',
-            'mata_pelajaran' => 'required',
+            'mata_pelajaran' => 'required|string|max:255',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 

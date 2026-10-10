@@ -78,8 +78,37 @@
                         @enderror
                     </div>
 
+                    <div class="col-12 mb-4">
+                        <label class="form-label fw-bold">Foto Gedung Sekolah</label>
+
+                        @if($profile->foto_gedung)
+                            <div class="mb-3">
+                                <img src="{{ asset('storage/' . $profile->foto_gedung) }}"
+                                     alt="Foto Gedung Sekolah"
+                                     class="img-thumbnail"
+                                     style="width: 300px; height: 180px; object-fit: cover;">
+                            </div>
+                        @endif
+
+                        <input type="file"
+                               name="foto_gedung"
+                               class="form-control @error('foto_gedung') is-invalid @enderror"
+                               accept=".jpg,.jpeg,.png,.webp">
+
+                        <small class="text-muted">
+                            Unggah foto gedung sekolah. Kosongkan jika tidak ingin mengubah foto. Maksimal 2 MB.
+                        </small>
+
+                        @error('foto_gedung')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
+                    <div>
+
                     <div class="col-12 mb-3">
-                        <label class="form-label font-weight-bold">Foto Sampul / Gedung / Kepala Sekolah</label>
+                        <label class="form-label font-weight-bold">Foto Kepala Sekolah</label>
                         @if(isset($profil->foto) && $profil->foto)
                             <div class="mb-2">
                                 <img src="{{ asset('storage/' . $profil->foto) }}" alt="Foto Saat Ini" class="img-thumbnail" style="max-height: 100px;">

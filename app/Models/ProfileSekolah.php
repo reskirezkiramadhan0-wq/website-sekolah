@@ -6,19 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProfileSekolah extends Model
 {
+   
     protected $table = 'profile_sekolas';
 
     protected $fillable = [
         'nama_sekolah',
-        'kepala_sekola',
-        'foto',
+        'kepala_sekolah',
         'npsn',
-        'alamat',
         'kontak',
-        'visi',
-        'misi',
         'tahun_berdiri',
+        'alamat',
         'deskripsi',
+        'visi_misi',
+        'logo',
+        'foto',
+        'foto_gedung',
         
     ];
 }

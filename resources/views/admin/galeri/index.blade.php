@@ -22,7 +22,7 @@
             <a href="{{ route('admin.galeri.create') }}"
                class="btn btn-primary btn-sm">
                 <i class="fas fa-plus me-1"></i>
-                Tambah Foto
+                Tambah Gambar
             </a>
         </div>
 
@@ -35,9 +35,10 @@
                     <thead class="table-light">
                         <tr>
                             <th width="60">No</th>
-                            <th width="150">Foto</th>
+                            <th width="150">Gambar</th>
                             <th>Judul</th>
-                            <th>Deskripsi</th>
+                            <th>Keterangan</th>
+                            <th>Tanggal</th>
                             <th width="150">Aksi</th>
                         </tr>
                     </thead>
@@ -50,7 +51,7 @@
                                 <td>{{ $loop->iteration }}</td>
 
                                 <td>
-                                    <img src="{{ asset('storage/' . $galeri->foto) }}"
+                                    <img src="{{ asset('storage/' . $galeri->file) }}"
                                          width="120"
                                          height="80"
                                          class="rounded"
@@ -62,14 +63,19 @@
                                 </td>
 
                                 <td>
-                                    {{ $galeri->deskripsi ?? '-' }}
+                                    {{ $galeri->keterangan ?? '-' }}
+                                </td>
+
+                                <td>
+                                    {{ $galeri->tanggal }}
                                 </td>
 
                                 <td>
 
                                     <a href="{{ route('admin.galeri.edit', $galeri->id) }}"
                                        class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-edit me-1"></i>
+                                        edit
                                     </a>
 
                                     <form action="{{ route('admin.galeri.destroy', $galeri->id) }}"
@@ -82,7 +88,8 @@
                                         <button type="submit"
                                                 class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Yakin ingin menghapus foto ini?')">
-                                            <i class="fas fa-trash"></i>
+                                            <i class="fas fa-trash me-1"></i>
+                                            hapus
                                         </button>
 
                                     </form>

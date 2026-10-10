@@ -38,7 +38,8 @@
                             <th width="60">No</th>
                             <th width="120">Gambar</th>
                             <th>Judul</th>
-                            <th>Tanggal</th>
+                            <th>Isi Berita</th>
+                            <th width="130">Tanggal</th>
                             <th width="150">Aksi</th>
                         </tr>
                     </thead>
@@ -70,18 +71,22 @@
                                 </td>
 
                                 <td>
+                                    {{ Str::limit(strip_tags($berita->isi), 80) }}
+                                </td>
+
+                                <td>
                                     {{ \Carbon\Carbon::parse($berita->tanggal)->format('d-m-Y') }}
                                 </td>
 
                                 <td>
 
-                                    <a href="{{ route('admin.berita.edit', $berita->id) }}"
+                                    <a href="{{ route('admin.berita.edit', $berita->id_berita) }}"
                                        class="btn btn-warning btn-sm"
                                        title="Edit">
                                         <i class="bi bi-pencil"></i>
                                     </a>
 
-                                    <form action="{{ route('admin.berita.destroy', $berita->id) }}"
+                                    <form action="{{ route('admin.berita.destroy', $berita->id_berita) }}"
                                           method="POST"
                                           class="d-inline">
 
@@ -104,7 +109,7 @@
                         @empty
 
                             <tr>
-                                <td colspan="5"
+                                <td colspan="6"
                                     class="text-center text-muted py-4">
                                     Belum ada data berita.
                                 </td>

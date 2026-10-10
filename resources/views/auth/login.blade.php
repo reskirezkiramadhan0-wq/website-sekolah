@@ -123,7 +123,7 @@
     <!-- JUDUL -->
 
     <h3 class="login-title">
-        SMK YPC CINTAWA
+        SMK SIRAHCAI
     </h3>
 
 

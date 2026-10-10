@@ -272,6 +272,82 @@ input {
     color: white;
 }
 
+.sidebar-logout {
+    flex-shrink: 0;
+
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 10px 0 0;
+
+    background: transparent !important;
+
+    border: none !important;
+}
+
+.sidebar-logout form {
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent !important;
+
+    border: none !important;
+}
+
+.btn-logout {
+    width: 100%;
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 13px;
+
+    border: none !important;
+    border-radius: 10px;
+
+    background: transparent !important;
+
+    color: rgba(255, 255, 255, 0.82) !important;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.btn-logout i {
+    width: 20px;
+    min-width: 20px;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    color: #d9e9ff;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.09) !important;
+
+    color: #ffffff !important;
+}
+
+.btn-logout:hover i {
+    color: #ffffff;
+}
 /* =========================================================
    SIDEBAR PROFILE
    ========================================================= */
@@ -346,7 +422,7 @@ input {
    MAIN WRAPPER
    ========================================================= */
 
-.main-wrapper {
+.main-content {
     min-height: 100vh;
 
     margin-left: var(--sidebar-width);
@@ -360,6 +436,7 @@ input {
 
     transition: margin-left 0.25s ease;
 }
+
 
 /* =========================================================
    NAVBAR
@@ -700,7 +777,7 @@ input {
    GRAFIK TETAP ADA
    ========================================================= */
 
-.main-wrapper > .row {
+.main-content > .row {
     margin-left: 0;
     margin-right: 0;
 }
@@ -750,7 +827,7 @@ input {
         --sidebar-width: 240px;
     }
 
-    .main-wrapper {
+    .main-content {
         margin-left: var(--sidebar-width);
 
         padding-left: 30px;
@@ -793,7 +870,7 @@ input {
         transform: translateX(0);
     }
 
-    .main-wrapper {
+    .main-content {
         margin-left: 0;
 
         padding-left: 25px;
@@ -887,7 +964,7 @@ input {
 
 @media (max-width: 480px) {
 
-    .main-wrapper {
+    .main-content {
         padding-left: 15px;
         padding-right: 15px;
     }
