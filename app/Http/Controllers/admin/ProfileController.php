@@ -12,21 +12,25 @@ class ProfileController extends Controller
     // Menampilkan halaman profil sekolah
     public function index()
     {
-        $profile = ProfileSekolah::first(); // Mengambil data profil pertama
+        $profile = ProfileSekolah::first();
+
         return view('admin.profile.index', compact('profile'));
     }
 
-    // Menampilkan halaman form tambah profil
+    /**
+     * Menampilkan form tambah profil sekolah.
+     */
     public function create()
     {
         return view('admin.profile.create');
     }
 
-    // Menyimpan data profil baru ke database
+    /**
+     * Menyimpan profil sekolah baru.
+     */
     public function store(Request $request)
     {
-        // Validasi input
-        $request->validate([
+        $data = $request->validate([
             'nama_sekolah'   => 'required|string|max:255',
             'kepala_sekolah' => 'nullable|string|max:255',
             'npsn'           => 'nullable|string|max:50',
@@ -35,58 +39,107 @@ class ProfileController extends Controller
             'kontak'         => 'nullable|string|max:50',
             'deskripsi'      => 'nullable|string',
             'visi_misi'      => 'nullable|string',
-            'logo'           => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'foto'           => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto_gedung' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $data = $request->except(['logo', 'foto']);
-
-        // Upload Logo jika ada
+        // Upload logo sekolah.
         if ($request->hasFile('logo')) {
-            $data['logo'] = $request->file('logo')->store('profile_sekolah', 'public');
+            $data['logo'] = $request->file('logo')
+                ->store('profile_sekolah', 'public');
         }
 
-        // Upload Foto jika ada
+        // Upload foto kepala sekolah.
         if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('profile_sekolah', 'public');
+            $data['foto'] = $request->file('foto')
+                ->store('profile_sekolah', 'public');
         }
 
-        // Simpan ke database
+        // Upload foto gedung sekolah.
+        if ($request->hasFile('foto_gedung')) {
+            $data['foto_gedung'] = $request->file('foto_gedung')
+                ->store('profile_sekolah', 'public');
+        }
+
         ProfileSekolah::create($data);
 
-        return redirect()->route('admin.profile.index')->with('success', 'Profil sekolah berhasil ditambahkan!');
+        return redirect()
+            ->route('admin.profile.index')
+            ->with('success', 'Profil sekolah berhasil ditambahkan!');
     }
 
-    // Menampilkan halaman edit profil
+    /**
+     * Menampilkan form edit profil sekolah.
+     */
     public function edit($id)
     {
         $profile = ProfileSekolah::findOrFail($id);
+
         return view('admin.profile.edit', compact('profile'));
     }
 
-    // Memperbarui profil sekolah
+    /**
+     * Memperbarui profil sekolah.
+     */
     public function update(Request $request, $id)
     {
         $profile = ProfileSekolah::findOrFail($id);
-        
-        $data = $request->except(['logo', 'foto']);
 
+        $data = $request->validate([
+            'nama_sekolah'   => 'required|string|max:255',
+            'kepala_sekolah' => 'nullable|string|max:255',
+            'npsn'           => 'nullable|string|max:50',
+            'tahun_berdiri'  => 'nullable|string|max:10',
+            'alamat'         => 'nullable|string',
+            'kontak'         => 'nullable|string|max:50',
+            'deskripsi'      => 'nullable|string',
+            'visi_misi'      => 'nullable|string',
+
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto_gedung' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
+
+        // Memperbarui logo sekolah.
         if ($request->hasFile('logo')) {
             if ($profile->logo) {
                 Storage::disk('public')->delete($profile->logo);
             }
-            $data['logo'] = $request->file('logo')->store('profile_sekolah', 'public');
+
+            $data['logo'] = $request->file('logo')
+                ->store('profile_sekolah', 'public');
         }
 
+        // Memperbarui foto kepala sekolah.
         if ($request->hasFile('foto')) {
             if ($profile->foto) {
                 Storage::disk('public')->delete($profile->foto);
             }
-            $data['foto'] = $request->file('foto')->store('profile_sekolah', 'public');
+
+            $data['foto'] = $request->file('foto')
+                ->store('profile_sekolah', 'public');
         }
 
+        // Memperbarui foto gedung sekolah.
+        if ($request->hasFile('foto_gedung')) {
+            if ($profile->foto_gedung) {
+                Storage::disk('public')->delete(
+                    $profile->foto_gedung
+                );
+            }
+
+            $data['foto_gedung'] = $request->file('foto_gedung')
+                ->store('profile_sekolah', 'public');
+        }
+
+        // Simpan perubahan ke database.
         $profile->update($data);
 
-        return redirect()->route('admin.profile.index')->with('success', 'Profil sekolah berhasil diperbarui!');
+        return redirect()
+            ->route('admin.profile.index')
+            ->with('success', 'Profil sekolah berhasil diperbarui!');
     }
 }
+
